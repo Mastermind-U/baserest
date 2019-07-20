@@ -27,9 +27,9 @@ class ChatView(APIView):
 
     def post(self, request):
         # room = request.POST.get('room')
-        status = 'Error'
+        status = 400
         dialog = serializers.ChatPostSerializer(data=request.POST)
         if dialog.is_valid():
             dialog.save(user=request.user)
-            status = 'Add'
-        return Response({'status': status})
+            status = 201
+        return Response(status=status)
