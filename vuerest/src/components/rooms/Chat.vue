@@ -1,22 +1,21 @@
 <template>
-    <mu-col span="1" sm="9" align="end">
-        <mu-container style="border: .5px solid black;">
-            <div v-for="dialog in chats">
-                <p><strong>{{dialog.user.username}}</strong></p>
-                <p>{{dialog.text}}</p>
-                <span>{{dialog.date}}</span>
-            </div>
+    <mu-col span="1" sm="9">
+        <mu-container ref="container" class="messages" align="end">
+            <mu-load-more>
+                <div v-for="dialog in chats">
+                    <p><strong>{{dialog.user.username}}</strong></p>
+                    <p>{{dialog.text}}</p>
+                    <span>{{dialog.date}}</span>
+                    <mu-divider />
+                </div>
+            </mu-load-more>
         </mu-container>
-        <mu-text-field 
-            multi-line 
-            :rows="3" 
-            prop="model"
-            :rows-max="6" 
-            v-model="form.textarea" 
-            placeholder="Введите текст сообщения">
-        </mu-text-field>
-        <mu-button color="blue" @click="sendMessage">Send<mu-icon right value="send"></mu-icon>
-        </mu-button>
+        <mu-container class="text mt-2">
+            <mu-text-field multi-line :rows="4" prop="model" :rows-max="6" v-model="form.textarea" placeholder="Введите текст сообщения">
+            </mu-text-field>
+            <mu-button color="blue" @click="sendMessage">Send<mu-icon right value="send"></mu-icon>
+            </mu-button>
+        </mu-container>
     </mu-col>
 </template>
 <script>
@@ -67,7 +66,9 @@ export default {
         }
     }
 }
-
 </script>
 <style scoped>
+.text {
+
+}
 </style>

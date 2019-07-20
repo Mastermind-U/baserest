@@ -1,7 +1,7 @@
 <template>
     <mu-container>
         <mu-appbar style="width: 100%;" color="primary">
-            Hello! Чат на vue.js
+            Hello! Чат на vue.js!
             <mu-button v-if="!auth" @click="loginRedirect" class="" flat slot="right">Вход</mu-button>
             <mu-button v-else @click="logout" class="" flat slot="right">Выход</mu-button>
         </mu-appbar>
@@ -10,8 +10,8 @@
             
         </mu-row>
         <mu-row class="mt-2">
-            <Room v-if="auth" @openChat="openChat"></Room>
-            <Chat v-if="dialog.show" :pk="dialog.pk"></Chat>
+            <Room v-if="auth" @openChat="openChat"/>
+            <Chat v-if="dialog.show" :pk="dialog.pk"/>
         </mu-row>
     </mu-container>
 </template>

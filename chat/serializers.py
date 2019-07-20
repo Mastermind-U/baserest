@@ -14,6 +14,11 @@ class UserSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
     creator = UserSerializer()
     visitors = UserSerializer(many=True)
+    date = serializers.DateTimeField(
+        format="%d-%m-%Y %H:%M",
+        required=False,
+        read_only=True,
+    )
 
     class Meta:
         model = Room
@@ -22,6 +27,11 @@ class RoomSerializer(serializers.ModelSerializer):
 
 class ChatSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    date = serializers.DateTimeField(
+        format="%d-%m-%Y %H:%M",
+        required=False,
+        read_only=True,
+    )
 
     class Meta:
         model = Chat

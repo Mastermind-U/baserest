@@ -28,9 +28,6 @@ export default {
         $.ajaxSetup({
             headers: { 'Authorization': 'Token ' + sessionStorage.getItem('auth_token') }
         })
-        alert('Complete!')
-
-
         this.loadRoom()
 
     },
