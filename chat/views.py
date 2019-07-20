@@ -1,0 +1,35 @@
+from django.shortcuts import render
+from rest_framework import permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from chat import serializers
+from chat.models import Chat
+from chat.models import Room
+
+
+class RoomView(APIView):
+    def get(self, request):
+        rooms = Room.objects.all()
+        serializer = serializers.RoomSerializer(rooms, many=True)
+        return Response({'data': serializer.data})
+
+
+class ChatView(APIView):
+    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+    def get(self, request):
+        room = request.GET.get('room')
+        chat = Chat.objects.filter(room=room)
+        serializer = serializers.ChatSerializer(chat, many=True)
+
+        return Response({'data': serializer.data})
+
+    def post(self, request):
+        # room = request.POST.get('room')
+        status = 'Error'
+        dialog = serializers.ChatPostSerializer(data=request.POST)
+        if dialog.is_valid():
+            dialog.save(user=request.user)
+            status = 'Add'
+        return Response({'status': status})
