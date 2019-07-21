@@ -17,8 +17,8 @@ class RoomView(APIView):
 
 
 class ChatView(APIView):
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         room = request.GET.get('room')
@@ -38,7 +38,19 @@ class ChatView(APIView):
 
 
 class AddUsers(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request):
         users = User.objects.all()
         serializer = serializers.UserSerializer(users, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        user = request.data.get('user')
+        room = Room.objects.filter(pk=request.data.get('room')).first()
+        status = 400
+        if room and user:
+            room.visitors.add(user)
+            room.save()
+            status = 201
+        return Response({}, status=status)

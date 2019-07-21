@@ -8,4 +8,5 @@ from chat import views
 urlpatterns = [
     path('room/', views.RoomView.as_view()),
     path('chat/', views.ChatView.as_view()),
+    path('users/', views.AddUsers.as_view()),
 ]
