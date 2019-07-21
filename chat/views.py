@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.db.models import Q, Min
+
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,9 +13,15 @@ from djoser.urls.base import User
 
 class RoomView(APIView):
     def get(self, request):
-        rooms = Room.objects.all()
+        rooms = Room.objects.filter(
+            Q(creator=request.user) | Q(visitors=request.user)
+        )
         serializer = serializers.RoomSerializer(rooms, many=True)
         return Response({'data': serializer.data})
+
+    def post(self, request):
+        Room.objects.create(creator=request.user)
+        return Response({}, status=201)
 
 
 class ChatView(APIView):
