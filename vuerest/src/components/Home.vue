@@ -9,22 +9,23 @@
         <mu-row>
             
         </mu-row>
-        <mu-row class="mt-2">
+        <!-- <mu-row class="mt-2">
             <Room v-if="auth" @openChat="openChat"/>
             <Chat v-if="dialog.show" :pk="dialog.pk"/>
-        </mu-row>
+        </mu-row> -->
+        <slot></slot>
     </mu-container>
 </template>
 <script>
-import Room from '@/components/rooms/Room'
-import Chat from '@/components/rooms/Chat'
+// import Room from '@/components/rooms/Room'
+// import Chat from '@/components/rooms/Chat'
 
 export default {
     name: "Home",
-    components: {
-        Room,
-        Chat,
-    },
+    // components: {
+    //     Room,
+    //     Chat,
+    // },
     data() {
         return {
             dialog: {
@@ -48,10 +49,10 @@ export default {
             sessionStorage.removeItem('auth_token')
             window.location = '/'
         },
-        openChat(pk) {
-            this.dialog.pk = pk
-            this.dialog.show = true
-        }
+        // openChat(pk) {
+        //     this.dialog.pk = pk
+        //     this.dialog.show = true
+        // }
     }
 
 }

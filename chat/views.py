@@ -15,7 +15,7 @@ class RoomView(APIView):
     def get(self, request):
         rooms = Room.objects.filter(
             Q(creator=request.user) | Q(visitors=request.user)
-        )
+        )  # .distinct('creator')
         serializer = serializers.RoomSerializer(rooms, many=True)
         return Response({'data': serializer.data})
 
