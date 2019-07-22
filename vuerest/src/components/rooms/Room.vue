@@ -1,7 +1,7 @@
 <template>
     <HomeSlot>
-        <mu-container>
-            <mu-col sm="3" class="rooms-list">
+        <mu-row gutter>
+            <mu-col span='2'>
                 <mu-paper :z-depth="1" style="border: .5px solid black;">
                     <mu-list textline="two-line" :z-depth="1">
                         <div v-for="room in rooms" v-bind:key="room">
@@ -19,11 +19,11 @@
                     </mu-list>
                 </mu-paper>
                 <mu-button @click="addRoom" class="addbtn">Add Room</mu-button>
-
             </mu-col>
-        </mu-container>
-
-            <slot></slot>
+            <mu-col span='10'>
+                <slot></slot>
+            </mu-col>
+        </mu-row>
     </HomeSlot>
 </template>
 <script>

@@ -1,7 +1,6 @@
 <template>
     <RoomSlot>
         <mu-container>
-        <mu-col>
             <AddUsers :room='pk' />
             <mu-container ref="container" class="messages" align="end">
                 <div v-for="dialog in chats" v-bind:key="dialog">
@@ -18,7 +17,6 @@
                 <mu-button color="blue" @click="sendMessage">Send<mu-icon right value="send"></mu-icon>
                 </mu-button>
             </mu-container>
-        </mu-col>
         </mu-container>
     </RoomSlot>
 </template>
@@ -76,6 +74,7 @@
                     },
                     success: (response) => {
                         this.loadChat()
+                        this.form.textarea = ''
                     },
                     error: (response) => {
                         alert(response.statusText)
