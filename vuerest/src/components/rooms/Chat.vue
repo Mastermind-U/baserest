@@ -1,7 +1,7 @@
 <template>
     <RoomSlot>
         <mu-col span="1" sm="9">
-            <AddUsers :room='id' />
+            <AddUsers :room='pk' />
             <mu-container ref="container" class="messages" align="end">
                 <div v-for="dialog in chats" v-bind:key="dialog">
                     <p><strong>{{dialog.user.username}}</strong></p>
@@ -29,7 +29,8 @@
             pk: '',
         },
         components: {
-            AddUsers
+            AddUsers,
+            RoomSlot
         },
         data() {
             return {
