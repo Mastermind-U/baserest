@@ -1,27 +1,29 @@
 <template>
     <HomeSlot>
-        <mu-col span="8" sm="3" class="rooms-list">
-            <mu-paper :z-depth="1" style="cursor: pointer; border: .5px solid black;">
-                <mu-list textline="two-line" :z-depth="1">
-                    <div v-for="room in rooms" v-bind:key="room">
-                        <div class="container" @click="openChat(room.pk)">
-                            <mu-list-item button :ripple="false">
-                                <mu-list-item-content>
-                                    <mu-list-item-title>
-                                        <h4>{{room.creator.username}}</h4>
-                                    </mu-list-item-title>
-                                    <mu-list-item-sub-title>{{room.date}}</mu-list-item-sub-title>
-                                </mu-list-item-content>
-                            </mu-list-item>
+        <mu-container>
+            <mu-col sm="3" class="rooms-list">
+                <mu-paper :z-depth="1" style="border: .5px solid black;">
+                    <mu-list textline="two-line" :z-depth="1">
+                        <div v-for="room in rooms" v-bind:key="room">
+                            <div @click="openChat(room.pk)">
+                                <mu-list-item button :ripple="false">
+                                    <mu-list-item-content>
+                                        <mu-list-item-title>
+                                            <h4>{{room.creator.username}}</h4>
+                                        </mu-list-item-title>
+                                        <mu-list-item-sub-title>{{room.date}}</mu-list-item-sub-title>
+                                    </mu-list-item-content>
+                                </mu-list-item>
+                            </div>
                         </div>
-                    </div>
-                </mu-list>
-            </mu-paper>
-            <mu-button @click="addRoom" class="addbtn">Add Room</mu-button>
+                    </mu-list>
+                </mu-paper>
+                <mu-button @click="addRoom" class="addbtn">Add Room</mu-button>
 
-        </mu-col>
-        <slot></slot>
+            </mu-col>
+        </mu-container>
 
+            <slot></slot>
     </HomeSlot>
 </template>
 <script>
@@ -57,7 +59,12 @@
             },
             openChat(pk) {
                 // this.$emit('openChat', pk)
-                this.$router.push({name: 'chat', params: {pk: pk}})
+                this.$router.push({
+                    name: 'chat',
+                    params: {
+                        pk: pk
+                    }
+                })
             },
             addRoom() {
                 $.ajax({

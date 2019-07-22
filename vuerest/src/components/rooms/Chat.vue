@@ -1,6 +1,7 @@
 <template>
     <RoomSlot>
-        <mu-col span="1" sm="9">
+        <mu-container>
+        <mu-col>
             <AddUsers :room='pk' />
             <mu-container ref="container" class="messages" align="end">
                 <div v-for="dialog in chats" v-bind:key="dialog">
@@ -10,7 +11,7 @@
                     <mu-divider />
                 </div>
             </mu-container>
-            <mu-container class="text mt-3">
+            <mu-container class="text">
                 <mu-text-field class="textbase" multi-line prop="model" :rows="4" :rows-max="6" v-model="form.textarea"
                     placeholder="Введите текст сообщения">
                 </mu-text-field>
@@ -18,6 +19,7 @@
                 </mu-button>
             </mu-container>
         </mu-col>
+        </mu-container>
     </RoomSlot>
 </template>
 <script>
