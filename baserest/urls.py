@@ -29,4 +29,4 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += re_path(r'^.*', views.index)
+urlpatterns += [re_path(r'^.*', views.index)]
