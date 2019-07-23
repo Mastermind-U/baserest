@@ -28,7 +28,7 @@
         methods: {
             loadUsers() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/users/',
+                    url: 'http://185.159.129.154/api/v1/chat/users/',
                     type: 'GET',
 
                     success: (response) => {
@@ -38,7 +38,7 @@
             },
             addUser() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/users/',
+                    url: 'http://185.159.129.154/api/v1/chat/users/',
                     type: 'GET',
                     data: {
                         room: this.room,

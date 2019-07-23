@@ -50,7 +50,7 @@
         methods: {
             loadRoom() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/room/',
+                    url: 'http://185.159.129.154/api/v1/chat/room/',
                     type: 'GET',
                     success: (response) => {
                         this.rooms = response.data.data
@@ -68,7 +68,7 @@
             },
             addRoom() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/room/',
+                    url: 'http://185.159.129.154/api/v1/chat/room/',
                     type: 'POST',
                     success: (response) => {
                         this.loadRoom()

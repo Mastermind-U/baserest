@@ -51,7 +51,7 @@
         methods: {
             setlogin() {
                 $.ajax({
-                    url: 'http://localhost:5555/auth/token/login/',
+                    url: 'http://185.159.129.154/auth/token/login/',
                     type: "POST",
                     data: {
                         username: this.validateForm.username,

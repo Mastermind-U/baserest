@@ -54,7 +54,7 @@
         methods: {
             loadChat() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/chat/',
+                    url: 'http://185.159.129.154/api/v1/chat/chat/',
                     type: 'GET',
                     data: {
                         room: this.$route.params.pk,
@@ -66,7 +66,7 @@
             },
             sendMessage() {
                 $.ajax({
-                    url: 'http://localhost:5555/api/v1/chat/chat/',
+                    url: 'http://185.159.129.154/api/v1/chat/chat/',
                     type: 'POST',
                     data: {
                         room: this.$route.params.pk,

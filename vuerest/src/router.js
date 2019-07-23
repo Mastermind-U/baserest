@@ -8,6 +8,7 @@ import Room from '@/components/rooms/Room'
 Vue.use(Router)
 
 export default new Router({
+	mode: 'history',
 	routes: [{
 			path: '/',
 			name: 'room',
