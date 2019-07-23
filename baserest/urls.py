@@ -25,8 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/chat/', include('chat.urls')),
     path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
-    path('auth/', include('djoser.urls.jwt')),
+    re_path(r'^$', views.index)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += [re_path(r'^.*', views.index)]
